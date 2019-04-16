@@ -449,8 +449,6 @@ else
 	echo "Looks like this is a new IA backup. I'm going to put it in"
 	echo "$(pwd)/$localdir"
 	echo "This will use some disk space. :)"
-	printf "Press Enter to confirm, or ctrl-C to cancel."
-	read confirm
 
 	trap cleanup EXIT INT
 	installgitannex
