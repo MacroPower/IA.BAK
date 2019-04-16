@@ -2,7 +2,7 @@
 set -e
 
 getemail () {
-	printf "email address> "
+	printf "email address> $EMAIL_ADDRESS"
 	echo "$EMAIL_ADDRESS" > .registrationemail
 }
 echo ""
