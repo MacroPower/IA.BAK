@@ -9,7 +9,7 @@ RUN apt-get update -y \
       cron \
       libcgi-pm-perl \
     && apt-get clean -y \
-    mkdir -p /data
+    && mkdir -p /data
 ENTRYPOINT if [ ! -d "/annex/IA.BAK" ] ; \
     then \
       mkdir -p /annex \
