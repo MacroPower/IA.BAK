@@ -8,16 +8,15 @@ RUN apt-get update -y \
       wget \
       cron \
       libcgi-pm-perl \
-    && apt-get clean -y
-ENTRYPOINT if [ ! -d "/data/IA.BAK" ] ; \
+    && apt-get clean -y \
+    mkdir -p /data
+ENTRYPOINT if [ ! -d "/annex/IA.BAK" ] ; \
     then \
-      mkdir -p /data \
-      && cd /data \
+      mkdir -p /annex \
+      && cd /annex \
       && git clone https://github.com/MacroPower/IA.BAK ; \
     else \
       echo Directory already exists ; \
     fi \
-    && cd /data/IA.BAK/ \
-    && git config annex.diskreserve "$DISK_RESERVED" \
-    && git config annex.web-options --limit-rate="$MAX_RATE" \
+    && cd /annex/IA.BAK \
     && ./iabak
