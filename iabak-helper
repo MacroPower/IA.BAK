@@ -2,7 +2,7 @@
 set -e
 
 NUMCOPIES=4
-ANNEXGETOPTS="-c annex.sshcaching=false"
+ANNEXGETOPTS=
 
 LANG=C
 export LANG
