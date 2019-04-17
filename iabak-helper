@@ -369,18 +369,22 @@ sharddirs () {
 }
 
 randomshard () {
+	cd /data
 	wantstate="$1"
 	${GIT} pull >&2 || true
 	grep " $wantstate$" repolist | cut -d ' ' -f 1 | perl -e 'while (<>) { chomp; if (! -d $_) { push @l, $_ } };  print $l[rand @l]'
+	cd -
 }
 
 randomnew () {
+	cd /data
 	active="$(randomshard active)"
 	if [ -z "$active" ]; then
 		randomshard reserve
 	else
 		echo "$active"
 	fi
+	cd -
 }
 
 cleanup () {
@@ -447,7 +451,7 @@ else
 	fi
 
 	echo "Looks like this is a new IA backup. I'm going to put it in"
-	echo "$(pwd)/$localdir"
+	echo "$localdir"
 	echo "This will use some disk space. :)"
 
 	trap cleanup EXIT INT
