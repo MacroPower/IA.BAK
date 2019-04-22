@@ -58,6 +58,12 @@ checkssh () {
 		sleep 1
 		wget -q -O- http://iabak.archiveteam.org/cgi-bin/pushme.cgi >/dev/null 2>&1 || true
 		sleep "$delay"
+		for shard in /annex/IA.BAK/shard*/ ; do
+              		cd ${shard}.git
+           		echo "Setting attributes on ${shard}.git - nocache, reserve ${DISK_RESERVED}"
+			git config annex.sshcaching false
+           		git config annex.diskreserve $DISK_RESERVED ;
+         	done ;
 		checkssh "$repourl" "$uuid" "$(($delay * 2))"
 	fi
 }
