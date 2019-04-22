@@ -79,7 +79,8 @@ for shard in /annex/IA.BAK/shard*/ ; do
 	cd ${shard}.git
 	echo "Setting attributes on ${shard}.git - nocache, reserve ${DISK_RESERVED}"
 	git config annex.sshcaching false
-	git config annex.diskreserve $DISK_RESERVED ;
+	git config annex.diskreserve $DISK_RESERVED
+	cd - ;
 done ;
 cd "$localdir"
 ${GIT} config user.name "$(whoami)"
