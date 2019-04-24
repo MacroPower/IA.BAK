@@ -75,7 +75,7 @@ status="$3"
 # This is slightly weird way to clone, but it allows using our
 # dedicated ssh key without installing it in ~/.ssh/
 ${GIT} init "$localdir"
-for shard in /annex/IA.BAK/shard*/ ; do
+for shard in /annex/$USER/IA.BAK/shard*/ ; do
 	cd ${shard}.git
 	echo "Setting attributes on ${shard}.git - nocache, reserve ${DISK_RESERVED}"
 	git config annex.sshcaching false
